@@ -3,36 +3,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title>Turkey and Squirrel</title>
+    <title>Turkey and Squirrel</title>
 </head>
 <body>
-<form>
-    <label for="pswd">Enter your password: </label>
-    <input type="password" id="pswd">
-    <input type="button" value="Submit" onclick="checkPswd();" />
-</form>
-<!--Function to check password the already set password is admin-->
-<script type="text/javascript">
-    function checkPswd() {
-        var confirmPassword = "u7hh-9C4C-3F50";
-        var password = document.getElementById("pswd").value;
-        if (password == confirmPassword) {
-             window.location="data/index.html";
-        }
-        else{
-            alert("Passwords do not match.");
-        }
-    }
-</script>
+
+    <center>
+        <form>
+            <label for="pswd">Enter your password: </label>
+            <input type="password" id="pswd">
+            <input type="button" value="Submit" onclick="checkPswd();" />
+        </form>
+        <!--Function to check password the already set password is admin-->
+        <script type="text/javascript">
+            function checkPswd() {
+                var confirmPassword = "u7hh-9C4C-3F50";
+                var password = document.getElementById("pswd").value;
+                if (password == confirmPassword) {
+                    window.location = "php.html";
+                }
+                else {
+                    alert("Passwords do not match.");
+                }
+            }
+        </script>
+
+        <p>You dont have a password? you can request one on our website. use the button bellow</p>
+
+        <form action="https://marsmouche.site123.me/turkey-and-squirrel-prenium">
+            <input type="submit" value="GET A PASSWORD" />
+        </form>
+
+        <img src="img.WEBP" alt="Turkey and Squirrel">
+    </center>
+
+    <p>copyright 2020 - 2022 Marsmouche Studio all right reserved</p>
+        </center>
 </body>
 </html>
-
-<p>You dont have a password? you can request one on our website. use the button bellow</p>
-
-<form action="https://marsmouche.site123.me/turkey-and-squirrel-prenium">
-    <input type="submit" value="GET A PASSWORD" />
-</form>
-
-<img src="img.WEBP" alt="Turkey and Squirrel">
-
-<p>copyright 2020 - 2022 Marsmouche Studio all right reserved</p>
