@@ -1,69 +1,305 @@
- </head> <body style="background-color:green;">
-
 <!DOCTYPE html>
-<html>
+<title>Turkey and Squirrel</title>
+<link rel="stylesheet" href="style.css" type="text/css">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width" />
-  <title>FREAK'S HOUSE</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+   <style>
+       body {
+           margin: 0;
+           padding: 0;
+           width: 100%;
+           height: 100vh;
+           display: flex;
+           flex-direction: row;
+           justify-content: center;
+           align-items: center;
+           background: #000;
+       }
+
+       .glow-on-hover {
+           width: 220px;
+           height: 50px;
+           border: none;
+           outline: none;
+           color: #fff;
+           background: #111;
+           cursor: pointer;
+           position: relative;
+           z-index: 0;
+           border-radius: 10px;
+       }
+
+           .glow-on-hover:before {
+               content: '';
+               background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+               position: absolute;
+               top: -2px;
+               left: -2px;
+               background-size: 400%;
+               z-index: -1;
+               filter: blur(5px);
+               width: calc(100% + 4px);
+               height: calc(100% + 4px);
+               animation: glowing 20s linear infinite;
+               opacity: 0;
+               transition: opacity .3s ease-in-out;
+               border-radius: 10px;
+           }
+
+           .glow-on-hover:active {
+               color: #000
+           }
+
+               .glow-on-hover:active:after {
+                   background: transparent;
+               }
+
+           .glow-on-hover:hover:before {
+               opacity: 1;
+           }
+
+           .glow-on-hover:after {
+               z-index: -1;
+               content: '';
+               position: absolute;
+               width: 100%;
+               height: 100%;
+               background: #111;
+               left: 0;
+               top: 0;
+               border-radius: 10px;
+           }
+
+       @keyframes glowing {
+           0% {
+               background-position: 0 0;
+           }
+
+           50% {
+               background-position: 400% 0;
+           }
+
+           100% {
+               background-position: 0 0;
+           }
+       }
+
+       .horror-text {
+           animation-duration: 1.5s;
+           animation-iteration-count: infinite;
+           animation-name: flickering;
+           animation-timing-function: step-start;
+           color: #912914;
+           font-family: 'UnifrakturCook', cursive;
+           
+       }
+
+       @keyframes flickering {
+           0% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           5% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           10% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(-15deg);
+           }
+
+           15% {
+               color: #ccc;
+               text-shadow: none;
+               transform: skewX(-15deg);
+           }
+
+           20% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           25% {
+               color: #ccc;
+               text-shadow: 2px 2px #912914;
+               transform: skewX(0);
+           }
+
+           30% {
+               color: #ccc;
+               text-shadow: 2px 2px #912914;
+               transform: skewX(0);
+           }
+
+           35% {
+               color: #ccc;
+               text-shadow: 2px 2px #912914;
+               transform: skewX(0);
+           }
+
+           37% {
+               color: #ccc;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           40% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           45% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           50% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           55% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           60% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           65% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           68% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           70% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           75% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(10deg);
+           }
+
+           80% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(10deg);
+           }
+
+           85% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(10deg);
+           }
+
+           90% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+
+           95% {
+               color: #912914;
+               text-shadow: 1px 1px #eee;
+               transform: skewX(0);
+           }
+
+           100% {
+               color: #912914;
+               text-shadow: none;
+               transform: skewX(0);
+           }
+       }
+
+
+       /* Additional styling */
+       html, body {
+           background-color: #222;
+           border: 0;
+           height: 100%;
+           margin: 0;
+           overflow: hidden;
+           padding: 0;
+           position: relative;
+           width: 100%;
+       }
+
+       .center {
+           left: 50%;
+           position: absolute;
+           top: 50%;
+           transform: translate(-50%, -50%);
+       }
+
+   </style>
 </head>
-<body>
 
-    <html>
-    <head>
-        <style>
+<body style="background-color:black;">
 
-            h1 {
-                text-align: center;
-            }
+    <h1 class="horror-text">
+        Freak's House</h1">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
 
-            h3 {
-                text-align: center;
-            }
+        <div>
+            <button class="glow-on-hover" type="button" href="1.html">Chapter 1 - The Basement</button>
 
-            h2 {
-                text-align: center;
-            }
+            <button class="glow-on-hover" type="button" href="2.html">Chapter 2 - The house</button>
 
-            bold {
-                text-align: center;
-            }
-
-            div {
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        </div>
-
-        <div class="header">
-            <h1>FREAK'S HOUSE</h1>
-            <p></p>
-        </div>
-
-        <input type=button onClick="parent.location='1.html'"
-               value='OPEN CHAPTER 1'>
-
-        <input type=button onClick="parent.location='2.html'"
-               value='OPEN CHAPTER 2'>
-
-        <p>     </p>
-        <p>     </p>
-
-        <div style="background-color:black;">
-            <p style="color:darkred;"><b>you got locked in a house with a gun, the question is, who is in that house and how many people will you have to kill to get out.</b></p>
+            <button class="glow-on-hover" type="button" href="3.html">Chapter 3 - One of US</button>
         </div>
 
         <style>
             body {
-                background-image: url('dark-house-building-wallpaper-preview.jpg');
+                background-image: url('background.jpg');
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-size: 100% 100%;
             }
         </style>
+        <!--
 
-    </body>
-    </html>
+       /\---/\
+     =( O W O )=
+    /(         )\
+
+    --!>

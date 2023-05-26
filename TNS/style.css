@@ -1,81 +1,113 @@
-box {
-    float: center;
-    margin-right: 20px;
+/* Style the header */
+.header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
 }
 
-.clear {
-    clear: both;
+/* Page content */
+.content {
+    padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+    /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+    .sticky + .content {
+        padding-top: 102px;
+    }
+
+.glow {
+    .glow {
+            color: #fff;
+            text-align: center;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+html {
+    font-size: 62.5%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background: #000000;
-    font-size: 0.875rem;
-    line-height: 1.5em;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #afafaf
+    background-color: #333;
 }
 
-/* The side navigation menu */
-.sidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: rgb(48, 58, 48);
-    position: fixed;
+.btn {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    // letter-spacing: .2rem;
+    text-decoration: none;
+    overflow: hidden;
+    display: inline-block;
+    padding: 0 4rem 0 3.8rem;
+    color: #FFF;
+    background: none;
+    border: 1px solid #FFF;
+    cursor: pointer;
+    transform: translate3d(0, 0, 0);
+    &:after
+
+{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 150%;
+    background: #FFF;
+    pointer-events: none;
+    transform: translate3d(0, 45px, 0);
+    transition: all 0.3s 0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+i {
+    font-style: normal;
+    line-height: 4.5rem;
+    display: inline-block;
     height: 100%;
-    overflow: auto;
+    padding-left: 1px;
+    padding-right: 1px;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    &:hover
+
+{
+    transform: translate3d(0, -6px, 0);
 }
 
-    /* Sidebar links */
-    .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-    }
-
-        /* Active/current link */
-        .sidebar a.active {
-            background-color: #042e04;
-            color: rgb(44, 179, 39);
-        }
-
-        /* Links on mouse-over */
-        .sidebar a:hover:not(.active) {
-            background-color: #555;
-            color: rgb(44, 179, 39);
-        }
-
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
 }
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 600px) {
-    .sidebar {
-        width: 600;
-        height: auto;
-        position: relative;
-    }
+&:hover {
+    color: #333;
+    &:after
 
-        .sidebar a {
-            float: left;
-        }
-
-    div.content {
-        margin-left: 0;
-    }
+{
+    transform: translate3d(0, 0, 0);
 }
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 400px) {
-    .sidebar a {
-        text-align: center;
-        float: none;
-    }
 }
+}
+
+View Compiled
+
