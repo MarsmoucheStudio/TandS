@@ -17,18 +17,6 @@
         }
     </style>
    <style>
-       body {
-           margin: 0;
-           padding: 0;
-           width: 100%;
-           height: 100vh;
-           display: flex;
-           flex-direction: row;
-           justify-content: center;
-           align-items: center;
-           background: #000;
-       }
-
        .glow-on-hover {
            width: 220px;
            height: 50px;
@@ -98,6 +86,29 @@
        }
        </style>
     <style>
+        .line {
+            background-color: darkred;
+            height: 300px;
+            width: 5%;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            margin: 10px
+        }
+
+        DIV.container {
+            min-height: 10em;
+            display: table-cell;
+            vertical-align: middle
+            horizontal-align: middle
+        }
+
        .horror-text {
            animation-duration: 1.5s;
            animation-iteration-count: infinite;
@@ -272,50 +283,55 @@
 
 <body style="background-color:black;">
 
+    <!--Logo-->
+
     <div class="horror-text">
         <h1>
             Freak's House</h1">
     </div>
     <br />
 
+    <!--Red line
     <div>
-    <style>
-        .vl {
-            border-left: 6px solid darkred;
-            height: 30%;
-        }
-    </style>
-        </div>
+        <style class="container">
+            .vl {
+                border-left: 6px solid darkred;
+                height: 30%;
+            }
+        </style>
+    </div> -->
 
-    <div class="vl"></div>
-
+    <!--buttons-->
     <center>
-      <div>
-        <button class="glow-on-hover">
-            <a target="popup"
-               onclick="window.open('1.html','name','width=1120,height=800')">Chapter 1 - The Basement</a>
-        </button>
-          </div>
-        <br />
-
         <div>
-        <button class="glow-on-hover">
-            <a target="popup"
-               onclick="window.open('2.html','name','width=1120,height=800')">Chapter 2 - The house</a>
-        </button>
-            </div>
-        <br />
-
-        <div>
-            <button class="glow-on-hover">
-                <a target="popup"
-                   onclick="window.open('3.html','name','width=1120,height=800')">Chapter 3 - One of US</a>
-            </button>
+            <div class="header-buttons">
+                <button class="glow-on-hover">
+                    <a target="popup"
+                       onclick="window.open('1.html','name','width=1120,height=800')">Chapter 1 - The Basement</a>
+                </button>
             </div>
             <br />
 
+            <div class="header-buttons">
+                <button class="glow-on-hover">
+                    <a target="popup"
+                       onclick="window.open('2.html','name','width=1120,height=800')">Chapter 2 - The house</a>
+                </button>
+            </div>
+            <br />
+
+            <div class="header-buttons">
+                <button class="glow-on-hover">
+                    <a target="popup"
+                       onclick="window.open('3.html','name','width=1120,height=800')">Chapter 3 - One of US</a>
+                </button>
+            </div>
+        </div>
+        <br />
+
     </center>
 
+    <!--Background-->
     <style>
         body {
             background-image: url('background.jpg');
