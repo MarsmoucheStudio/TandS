@@ -19,93 +19,23 @@
     </style>
     <style>
         .glow {
-            color: #fff;
+            color: ff0000;
             text-align: center;
             animation: glow 1s ease-in-out infinite alternate;
+            font-family: 'Oswald', sans-serif;
         }
 
         @-webkit-keyframes glow {
             from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e61300, 0 0 40px #e61300, 0 0 50px #e61300, 0 0 60px #e61300, 0 0 70px #e61300;
             }
 
             to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d, 0 0 50px #ff4d4d, 0 0 60px #ff4d4d, 0 0 70px #ff4d4d, 0 0 80px #ff4d4d;
             }
         }
     </style>
     <style>
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            background-color: #333;
-        }
-
-        .btn {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            // letter-spacing: .2rem;
-            text-decoration: none;
-            overflow: hidden;
-            display: inline-block;
-            padding: 0 4rem 0 3.8rem;
-            color: #FFF;
-            background: none;
-            border: 1px solid #FFF;
-            cursor: pointer;
-            transform: translate3d(0, 0, 0);
-            &:after
-
-        {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: -1;
-            height: 150%;
-            background: #FFF;
-            pointer-events: none;
-            transform: translate3d(0, 45px, 0);
-            transition: all 0.3s 0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        }
-
-        i {
-            font-style: normal;
-            line-height: 4.5rem;
-            display: inline-block;
-            height: 100%;
-            padding-left: 1px;
-            padding-right: 1px;
-            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-            &:hover
-
-        {
-            transform: translate3d(0, -6px, 0);
-        }
-
-        }
-
-        &:hover {
-            color: #333;
-            &:after
-
-        {
-            transform: translate3d(0, 0, 0);
-        }
-
-        }
-        }
-
-        View Compiled
-    </style>
-    <style>
-
 
         @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
 
@@ -115,9 +45,6 @@
             height: 100%;
             overflow: hidden;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
             font-family: 'Open Sans Condensed', sans-serif;
         }
 
@@ -407,68 +334,85 @@
 </head>
 
 <body style="background-color:black;">
-    <script src="script.js"></script>
 
-    <div class="glow">
+    <div style="margin-bottom: 100px;" class="glow">
+        <center>
         <h1>
-            <b>TURKEY AND SQUIRREL</b><br /> Animal Dystopia
+            <b style="border-bottom: 4px solid black;">TURKEY AND SQUIRREL</b>
+            <br /> 
+            <b>Animal Dystopia</b>
         </h1>
+        </center>
+    </div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-
+    <div style="margin-bottom: 50px;">
             <div>
-                <div>
-                    <button class="button button1" onclick="window.location.href='https://marsmouchestudio.github.io/st/';">
-                        Run Turkey and Squirrel
-                    </button>
-                </div>
-
-                <div>
-                    <button class="button button1"" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-1-1';">
-                        DOWNLOAD TURKEY AND SQUIRRE
-                    </button>
-                </div>
-
-                <div>
-                    <button class="button button1" onclick="window.location.href='https://polydactyl-bald-cod.glitch.me/';">
-                        MULTIPLAYER
-                    </button>
-                </div>
-
-                <div>
-                    <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel';">
-                        SEND TO THE LEADERBOARD
-                    </button>
-                </div>
-
-                <div>
-                    <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-item-trade';">
-                        ITEM TRADE
-                    </button>
-                </div>
-
-                <div>
-                    <button class="button button1" onclick="window.location.href='g1.html';">
-                        GUIDE
-                    </button>
-                </div>
+                <button class="button button1" onclick="window.location.href='https://marsmouchestudio.github.io/st/';">
+                    Run Turkey and Squirrel
+                </button>
             </div>
 
-        <br />
-        <br />
-        <br />
+            <div>
+                <button class="button button1" " onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-1-1';">
+                    DOWNLOAD TURKEY AND SQUIRRE
+                </button>
+            </div>
 
+        <!--
+            <div>
+                <button class="button button1" onclick="window.location.href='https://polydactyl-bald-cod.glitch.me/';">
+                    MULTIPLAYER LOBBY
+                </button>
+            </div>
+            -->
+
+            <div>
+                <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel';">
+                    SEND TO THE LEADERBOARD
+                </button>
+            </div>
+
+            <div>
+                <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-item-trade';">
+                    ITEM TRADE
+                </button>
+            </div>
+
+            <div>
+                <button class="button button1" onclick="window.location.href='g1.html';">
+                    GUIDE
+                </button>
+            </div>
+    </div>
+
+    <center>
+    <div style="width: 95%; height: 30%; border-radius: 25px; margin-bottom: 100px; background-color: green">
         <div>
-            <iframe style="background-color:darkolivegreen;" src="https://marsmouchestudio.github.io/T-S/" width="95%" height="400" allowtransparency="true" frameborder="0" scrolling="yes" allowfullscreen></iframe>
+            <p>
+                <b><u>TURKEY AND SQUIRREL LOG</u></b>
+                <br />
+                <br />
+                <b>-</b>THE 1.2.0 IS NOW HERE. ADD THE BLOOD MOON EVENT <b>-</b> jun 29, 2023
+                <br />
+                <br />
+                <b>-</b>THE 1.1.0 IS NOW ON! NEW UI ! <b>-</b> May 27, 2023
+                <br />
+                <br />
+                <b>-</b>THE 1.0.2 IS NOW ON <b>-</b> Dec 14, 2022
+                <br />
+                <br />
+                <b>-</b>THE 1.0.1 IS NOW ON <b>-</b> Nov 20, 2022
+                <br />
+                <br />
+                <b>-</b>THE 1.0.0 IS NOW ON <b>-</b> Sept 17, 2020
+                <br />
+                <br />
+                <b>-</b>THE SEASON 1 IS NOW ON, START YOUR NEXT GAME IN ADVENTURE MODE! TO GRIND ON THE LEADERBOARD!
+                <br />
+            </p>
         </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
+    </div>
+    </center>
 
         <style>
             body {
@@ -478,11 +422,11 @@
                 background-size: 100% 100%;
             }
         </style>
-
+    </body>
         <!--
 
-           /\---/\
-         =( O W O )=
-        /(         )\
+       /\---/\
+     =( O W O )=
+    /(         )\
 
-        --!>
+    --!>
