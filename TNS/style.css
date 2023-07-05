@@ -546,3 +546,22 @@ div[class*=container] {
     .button:after {
         bottom: -2px;
     }
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+img {
+    max-width: 100%
+}
+
+.image {
+    flex-basis: 40%
+}
+
+.text {
+    font-size: 20px;
+    padding-left: 20px;
+}
