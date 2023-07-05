@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<title>Turkey and Squirrel</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="style.css" type="text/css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+    <style>
+        .glow {
+            color: ff0000;
+            text-align: center;
+            animation: glow 1.5s ease-in-out infinite alternate;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e61300, 0 0 40px #e61300, 0 0 50px #e61300, 0 0 60px #e61300, 0 0 70px #e61300;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #521313, 0 0 40px #521313, 0 0 50px #521313, 0 0 60px #521313, 0 0 70px #521313, 0 0 80px #521313;
+            }
+        }
+    </style>
+    <style>
+
+        @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        div[class*=box] {
+            height: 33.33%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-1 {
+            background-color: #FF6766;
+        }
+
+        .box-2 {
+            background-color: #3C3C3C;
+        }
+
+        .box-3 {
+            background-color: #66A182;
+        }
+
+        .btn {
+            line-height: 50px;
+            height: 50px;
+            text-align: center;
+            width: 250px;
+            cursor: pointer;
+        }
+
+        /*
+        ========================
+              BUTTON ONE
+        ========================
+        */
+        .btn-one {
+            color: #FFF;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+            .btn-one span {
+                transition: all 0.3s;
+            }
+
+            .btn-one::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                opacity: 0;
+                transition: all 0.3s;
+                border-top-width: 1px;
+                border-bottom-width: 1px;
+                border-top-style: solid;
+                border-bottom-style: solid;
+                border-top-color: rgba(255,255,255,0.5);
+                border-bottom-color: rgba(255,255,255,0.5);
+                transform: scale(0.1, 1);
+            }
+
+            .btn-one:hover span {
+                letter-spacing: 2px;
+            }
+
+            .btn-one:hover::before {
+                opacity: 1;
+                transform: scale(1, 1);
+            }
+
+            .btn-one::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transition: all 0.3s;
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .btn-one:hover::after {
+                opacity: 0;
+                transform: scale(0.1, 1);
+            }
+
+
+        /*
+        ========================
+              BUTTON TWO
+        ========================
+        */
+        .btn-two {
+            color: #FFF;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+            .btn-two span {
+                z-index: 2;
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .btn-two::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transition: all 0.5s;
+                border: 1px solid rgba(255,255,255,0.2);
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .btn-two::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transition: all 0.5s;
+                border: 1px solid rgba(255,255,255,0.2);
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            .btn-two:hover::before {
+                transform: rotate(-45deg);
+                background-color: rgba(255,255,255,0);
+            }
+
+            .btn-two:hover::after {
+                transform: rotate(45deg);
+                background-color: rgba(255,255,255,0);
+            }
+
+
+        /*
+        ========================
+              BUTTON THREE
+        ========================
+        */
+        .btn-three {
+            color: #FFF;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+            .btn-three::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                background-color: rgba(255,255,255,0.1);
+                transition: all 0.3s;
+            }
+
+            .btn-three:hover::before {
+                opacity: 0;
+                transform: scale(0.5,0.5);
+            }
+
+            .btn-three::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                opacity: 0;
+                transition: all 0.3s;
+                border: 1px solid rgba(255,255,255,0.5);
+                transform: scale(1.2,1.2);
+            }
+
+            .btn-three:hover::after {
+                opacity: 1;
+                transform: scale(1,1);
+            }
+    </style>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: darkolivegreen;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+            .button1:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+            .button2:hover {
+                background-color: #008CBA;
+                color: white;
+            }
+
+        .button3 {
+            background-color: white;
+            color: black;
+            border: 2px solid #f44336;
+        }
+
+            .button3:hover {
+                background-color: #f44336;
+                color: white;
+            }
+
+        .button4 {
+            background-color: white;
+            color: black;
+            border: 2px solid #e7e7e7;
+        }
+
+            .button4:hover {
+                background-color: #e7e7e7;
+            }
+
+        .button5 {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+        }
+
+            .button5:hover {
+                background-color: #555555;
+                color: white;
+            }
+    </style>
+    <style>
+        .button1 {
+            padding: 5px 50px;
+            border-radius: 25px;
+        }
+
+        .button2 {
+            padding: 12px 28px;
+        }
+
+        .button3 {
+            padding: 14px 40px;
+        }
+
+        .button4 {
+            padding: 32px 16px;
+        }
+
+        .button5 {
+            padding: 16px;
+        }
+    </style>
+    <script>
+    function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+    c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+    return c.substring(name.length, c.length);
+    }
+    }
+    return "";
+    }
+
+    function checkCookie() {
+    let user = getCookie("username");
+    if (user != "") {
+    alert("You have enter the realm " + user);
+    } else {
+    user = prompt("Please enter your name:", "");
+    if (user != "" && user != null) {
+    setCookie("username", user, 30);
+    }
+    }
+        }
+    </script>
+</head>
+
+<body style="background-color:black;">
+
+    <div style="margin-bottom: 100px;" class="glow">
+        <center>
+            <h1>
+                <b style="border-bottom: 4px solid black;">TURKEY AND SQUIRREL</b>
+                <br />
+                <b>Animal Dystopia</b>
+            </h1>
+        </center>
+    </div>
+
+    <div style="margin-bottom: 50px;">
+        <div>
+            <button class="button button1" onclick="window.location.href='https://marsmouchestudio.github.io/st/';">
+                Run Turkey and Squirrel
+            </button>
+        </div>
+
+        <div>
+            <button class="button button1" " onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-1-1';">
+                DOWNLOAD TURKEY AND SQUIRRE
+            </button>
+        </div>
+
+        <!--
+            <div>
+                <button class="button button1" onclick="window.location.href='https://polydactyl-bald-cod.glitch.me/';">
+                    MULTIPLAYER LOBBY
+                </button>
+            </div>
+            -->
+
+        <div>
+            <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel';">
+                SEND TO THE LEADERBOARD
+            </button>
+        </div>
+
+        <div>
+            <button class="button button1" onclick="window.location.href='https://marsmouche.site123.me/turkey-and-squirrel-item-trade';">
+                ITEM TRADE
+            </button>
+        </div>
+
+        <div>
+            <button class="button button1" onclick="window.location.href='g1.html';">
+                GUIDE
+            </button>
+        </div>
+    </div>
+
+    <center>
+        <div class="glow" style="width: 95%; height: 30%; border-radius: 25px; margin-bottom: 100px; background-color: green">
+
+            <div>
+                <p>
+                    <b><u>TURKEY AND SQUIRREL LOG</u></b>
+                    <br />
+                    <br />
+                    <b>-</b>THE 1.2.0 IS NOW HERE. ADD THE BLOOD MOON EVENT <b>-</b> jun 29, 2023
+                    <br />
+                    <br />
+                    <b>-</b>THE 1.1.0 IS NOW ON! NEW UI ! <b>-</b> May 27, 2023
+                    <br />
+                    <br />
+                    <b>-</b>THE 1.0.2 IS NOW ON <b>-</b> Dec 14, 2022
+                    <br />
+                    <br />
+                    <b>-</b>THE 1.0.1 IS NOW ON <b>-</b> Nov 20, 2022
+                    <br />
+                    <br />
+                    <b>-</b>THE 1.0.0 IS NOW ON <b>-</b> Sept 17, 2020
+                    <br />
+                    <br />
+                    <b>-</b>THE SEASON 1 IS NOW ON, START YOUR NEXT GAME IN ADVENTURE MODE! TO GRIND ON THE LEADERBOARD!
+                    <br />
+                </p>
+            </div>
+
+        </div>
+    </center>
+
+    <div name="trade" style="width: 95%; height: 55%; border-radius: 25px; margin-bottom: 100px; background-color: green">
+        <p>
+            You have to have the Item in your inventory, not in a chest.<br />
+            To trade a item in turkey and Squirrel You have to be both in the same game mode, Softcore or Season. You also need to have the item in your inventory. To trade a item both player will need to use this website AND be logged-in (check the main page).<br />
+            The trade is not instant, it will take time. One of your moderator will make the trade when he will get the following form. Thats why we suggest you to not make trade too much, it take time so make big trade, multiple items, not 10 trade the same day.<br />
+            To trade multiple item write it like this in the Item to trade section : [(name of the item) (Quantity of the item 1 to 64)] [other items like the previous one]</p>
+        <br />
+        <form action="mailto:turkeyandsquirrel@gmail.com" method="post" enctype="text/plain">
+            Username:<br><input type="text" name="Username"> <br>
+            Level Code File:<br><input type="file" name="level"><br>
+            Other player Username:<br><input type="text" name="OPU"><br>
+            Item to trade:<br><input type="text" name="ITT"><br>
+            Other player Item to trade:<br><input type="text" name="OPITT"><br>
+            Game Code:<br><input type="file" name="GC"><br>
+
+            <input type="submit" value="Send">
+        </form>
+        </div>
+
+        <style>
+            body {
+                background-image: url('background.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+        </style>
+</body>
+        <!--
+
+       /\---/\
+     =( O W O )=
+    /(         )\
+
+    --!>

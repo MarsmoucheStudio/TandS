@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<title>Theodore's Lair</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        .image {
+            flex-basis: 100%
+        }
+
+        .text {
+            font-size: 20px;
+            padding-left: 15px;
+        }
+
+        </style>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+                alert("You have enter the realm " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <center>
+    <img src="marsmouche.webp" alt="Marsmouche Studio" style="width:14%;height:14%;">
+    <h1 style="font-family:Comic Sans MS"><u>Marsmouche Studio</u></h1>
+        <br />
+        <br />
+    </center>
+     
+    <div class="container">
+
+        <div class="image">
+            <img src="camp.gif" width="300" height="200" style="border-radius: 25px;">
+            <a href="https://discord.gg/tEnj9cTvY9" target="_blank"><img src="buton1.png" width="150" height="100"></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf95zJKV78fG72s57SqBGAhPAi17GmdnxEUrEGXWqgul-gv0w/viewform" target="_blank"><img src="buton2.png" width="150" height="100"></a>
+        </div>
+
+        <div class="text">
+            <b>Welcome on Marsmouche's Studio</b>
+            <br />
+            <p>greetings to all of you, I present to you our superb creation. This is a platform on which you can directly access each of our games and play for free in your Navigator.</p>
+            <br>
+            <p>Each page of this site is specially designed for its game and is completely unique.</p>
+            <br>
+            <p>I hope you will enjoy our creation throught this website.</p>
+            <p>Good luck trying to survive the Freak from the house!</p>
+            <br>
+            <p>-Dinde451 from Turkeydev1/Marsmouche Studio</p>
+            </div>
+    </div>
+
+    <div name="Log in">
+        <p id="Account">Click on the following button to create a Marsmouche Account for this website and Turkey and Squirrel. When You create a account you cannot change your Username or decconect yourself withouth deleting the cookies. If you Play Turkey and Squirrel You <b>HAVE</b> to use this account.</p>
+        <button onclick="checkCookie()">Log-In</button>
+
+    </div>
+
+        <style>
+            body {
+                background-image: url('back.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+        </style>
+
+        <!--
+
+       /\---/\
+     =( O W O )=
+    /(         )\
+
+    --!>
