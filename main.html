@@ -21,8 +21,7 @@
             font-size: 20px;
             padding-left: 15px;
         }
-
-        </style>
+    </style>
     <script>
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
@@ -50,31 +49,62 @@
         function checkCookie() {
             let user = getCookie("username");
             if (user != "") {
-                alert("You have enter the realm " + user);
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                    document.getElementById("rando").innerHTML = 'You have joined the realm as ' + user + '; Good luck.';
+                }
             } else {
                 user = prompt("Please enter your name:", "");
                 if (user != "" && user != null) {
                     setCookie("username", user, 30);
+                    document.getElementById("rando").innerHTML = 'You have joined the realm as ' + user + '; Good luck.';
                 }
             }
         }
+
     </script>
 </head>
 <body>
-    
+
     <center>
-    <img src="marsmouche.webp" alt="Marsmouche Studio" style="width:14%;height:14%;">
-    <h1 style="font-family:Comic Sans MS"><u>Marsmouche Studio</u></h1>
+        <img src="marsmouche.webp" alt="Marsmouche Studio" style="width:14%;height:14%;">
         <br />
         <br />
-    </center>
-     
+
+        <div style="width: 98%; height: 15%; border-radius: 25px; margin-bottom: 25px;>
+
+            <div name="Sign-In">
+                <img style="width:10%;height:10%;" src="img/button.png"
+                     onmouseover="this.src='img/button roll over.png';"
+                     onmouseout="this.src='img/button.png';"
+                     onclick="checkCookie()" ;>
+            </div>
+
+            <p id="rando">You are not logged-in. Click on the Skull.</p>
+
+            <script>
+                function view() {
+                    document.getElementById("rando").innerHTML = 'You have joined the realm as ' + user + '; Good luck.';
+                }
+            </script>
+
+
+        </div>
+
+        </div>
+
+            <h1 style="font-family:Comic Sans MS"><u>Marsmouche Studio</u></h1>
+            <br />
+            <br />
+</center>
+
     <div class="container">
 
         <div class="image">
-            <img src="camp.gif" width="300" height="200" style="border-radius: 25px;">
-            <a href="https://discord.gg/tEnj9cTvY9" target="_blank"><img src="buton1.png" width="150" height="100"></a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf95zJKV78fG72s57SqBGAhPAi17GmdnxEUrEGXWqgul-gv0w/viewform" target="_blank"><img src="buton2.png" width="150" height="100"></a>
+            <img src="img/camp.gif" width="300" height="200" style="border-radius: 25px;">
+            <a href="https://discord.gg/tEnj9cTvY9" target="_blank"><img src="img/buton1.png" width="150" height="100"></a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf95zJKV78fG72s57SqBGAhPAi17GmdnxEUrEGXWqgul-gv0w/viewform" target="_blank"><img src="img/buton2.png" width="150" height="100"></a>
         </div>
 
         <div class="text">
@@ -88,25 +118,26 @@
             <p>Good luck trying to survive the Freak from the house!</p>
             <br>
             <p>-Dinde451 from Turkeydev1/Marsmouche Studio</p>
-            </div>
+        </div>
     </div>
 
-    <div name="Log in">
-        <p id="Account">Click on the following button to create a Marsmouche Account for this website and Turkey and Squirrel. When You create a account you cannot change your Username or decconect yourself withouth deleting the cookies. If you Play Turkey and Squirrel You <b>HAVE</b> to use this account.</p>
-        <button onclick="checkCookie()">Log-In</button>
+    <div name="support to RANDO COMMENDO">
+        <p>
+            To connect Click on the skull at the top of the page.
+        </p>
 
     </div>
 
-        <style>
-            body {
-                background-image: url('back.jpg');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: 100% 100%;
-            }
-        </style>
+    <style>
+        body {
+            background-image: url('img/back.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
 
-        <!--
+    <!--
 
        /\---/\
      =( O W O )=
