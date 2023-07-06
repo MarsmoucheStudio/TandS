@@ -51,7 +51,7 @@ drone.on('open', error => {
   // connected to the room (including us). Signaling server is ready.
   room.on('members', members => {
     if (members.length >= 3) {
-      return alert('The room is full');
+      return alert('The room is full, To connect with your freind use a different channel. The channel name in after the #');
     }
     // If we are the second user to connect to the room we will be creating the offer
     const isOfferer = members.length === 2;
@@ -185,4 +185,4 @@ form.addEventListener('submit', () => {
   insertMessageToDOM(data, true);
 });
 
-insertMessageToDOM({content: 'Channel is ' + location.href});
+insertMessageToDOM({ content: 'Channel is ' + location.href + ', To create a new channel change the numbers and the letters after the #.' });
