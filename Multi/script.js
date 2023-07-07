@@ -1,188 +1,123 @@
-const possibleEmojis = [
-  '🐀','🐁','🐭','🐹','🐂','🐃','🐄','🐮','🐅','🐆','🐯','🐇','🐐','🐑','🐏','🐴',
-  '🐎','🐱','🐈','🐰','🐓','🐔','🐤','🐣','🐥','🐦','🐧','🐘','🐩','🐕','🐷','🐖',
-  '🐗','🐫','🐪','🐶','🐺','🐻','🐨','🐼','🐵','🙈','🙉','🙊','🐒','🐉','🐲','🐊',
-  '🐍','🐢','🐸','🐋','🐳','🐬','🐙','🐟','🐠','🐡','🐚','🐌','🐛','🐜','🐝','🐞',
-];
-function randomEmoji() {
-  var randomIndex = Math.floor(Math.random() * possibleEmojis.length);
-  return possibleEmojis[randomIndex];
-}
+// PS! Replace this with your own channel ID
+// If you use this channel ID your app will stop working in the future
+const CLIENT_ID = 'T50vLOPT8Ha2gWyv';
 
-const emoji = randomEmoji();
-const name = ('; ' + document.cookie).split(`; username=`).pop().split(';')[0];;
+const drone = new ScaleDrone(CLIENT_ID, {
+    data: { // Will be sent out as clientData via events
+        name: prompt("What is your display name? (No need to be your account name)"),
+    color: getRandomColor(),
+  },
+});
 
-// Generate random chat hash if needed
-if (!location.hash) {
-  location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
-const chatHash = location.hash.substring(1);
+let members = [];
 
-// TODO: Replace with your own channel ID
-const drone = new ScaleDrone('T50vLOPT8Ha2gWyv');
-// Scaledrone room name needs to be prefixed with 'observable-'
-const roomName = 'observable-' + chatHash;
-// Scaledrone room used for signaling
-let room;
-
-const configuration = {
-  iceServers: [{
-    url: 'stun:stun.l.google.com:19302'
-  }]
-};
-// RTCPeerConnection
-let pc;
-// RTCDataChannel
-let dataChannel;
-
-// Wait for Scaledrone signalling server to connect
 drone.on('open', error => {
   if (error) {
     return console.error(error);
   }
-  room = drone.subscribe(roomName);
+  console.log('Successfully connected to Scaledrone');
+
+  const room = drone.subscribe('observable-room');
   room.on('open', error => {
     if (error) {
       return console.error(error);
     }
-    console.log('Connected to signaling server');
+    console.log('Successfully joined room');
   });
-  // We're connected to the room and received an array of 'members'
-  // connected to the room (including us). Signaling server is ready.
-  room.on('members', members => {
-    if (members.length >= 3) {
-      return alert('The room is full, To connect with your freind use a different channel. The channel name in after the #');
+
+  room.on('members', m => {
+    members = m;
+    updateMembersDOM();
+  });
+
+  room.on('member_join', member => {
+    members.push(member);
+    updateMembersDOM();
+  });
+
+  room.on('member_leave', ({id}) => {
+    const index = members.findIndex(member => member.id === id);
+    members.splice(index, 1);
+    updateMembersDOM();
+  });
+
+  room.on('data', (text, member) => {
+    if (member) {
+      addMessageToListDOM(text, member);
+    } else {
+      // Message is from server
     }
-    // If we are the second user to connect to the room we will be creating the offer
-    const isOfferer = members.length === 2;
-    startWebRTC(isOfferer);
   });
 });
 
-// Send signaling data via Scaledrone
-function sendSignalingMessage(message) {
-  drone.publish({
-    room: roomName,
-    message
-  });
+drone.on('close', event => {
+  console.log('Connection was closed', event);
+});
+
+drone.on('error', error => {
+  console.error(error);
+});
+
+function getRandomColor() {
+  return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
 
-function startWebRTC(isOfferer) {
-  console.log('Starting WebRTC in as', isOfferer ? 'offerer' : 'waiter');
-  pc = new RTCPeerConnection(configuration);
+//------------- DOM STUFF
 
-  // 'onicecandidate' notifies us whenever an ICE agent needs to deliver a
-  // message to the other peer through the signaling server
-  pc.onicecandidate = event => {
-    if (event.candidate) {
-      sendSignalingMessage({'candidate': event.candidate});
-    }
-  };
+const DOM = {
+  membersCount: document.querySelector('.members-count'),
+  membersList: document.querySelector('.members-list'),
+  messages: document.querySelector('.messages'),
+  input: document.querySelector('.message-form__input'),
+  form: document.querySelector('.message-form'),
+};
 
+DOM.form.addEventListener('submit', sendMessage);
 
-  if (isOfferer) {
-    // If user is offerer let them create a negotiation offer and set up the data channel
-    pc.onnegotiationneeded = () => {
-      pc.createOffer(localDescCreated, error => console.error(error));
-    }
-    dataChannel = pc.createDataChannel('chat');
-    setupDataChannel();
-  } else {
-    // If user is not the offerer let wait for a data channel
-    pc.ondatachannel = event => {
-      dataChannel = event.channel;
-      setupDataChannel();
-    }
+function sendMessage() {
+  const value = DOM.input.value;
+  if (value === '') {
+    return;
   }
-
-  startListentingToSignals();
-}
-
-function startListentingToSignals() {
-  // Listen to signaling data from Scaledrone
-  room.on('data', (message, client) => {
-    // Message was sent by us
-    if (client.id === drone.clientId) {
-      return;
-    }
-    if (message.sdp) {
-      // This is called after receiving an offer or answer from another peer
-      pc.setRemoteDescription(new RTCSessionDescription(message.sdp), () => {
-        console.log('pc.remoteDescription.type', pc.remoteDescription.type);
-        // When receiving an offer lets answer it
-        if (pc.remoteDescription.type === 'offer') {
-          console.log('Answering offer');
-          pc.createAnswer(localDescCreated, error => console.error(error));
-        }
-      }, error => console.error(error));
-    } else if (message.candidate) {
-      // Add the new ICE candidate to our connections remote description
-      pc.addIceCandidate(new RTCIceCandidate(message.candidate));
-    }
+  DOM.input.value = '';
+  drone.publish({
+    room: 'observable-room',
+    message: value,
   });
 }
 
-function localDescCreated(desc) {
-  pc.setLocalDescription(
-    desc,
-    () => sendSignalingMessage({'sdp': pc.localDescription}),
-    error => console.error(error)
+function createMemberElement(member) {
+  const { name, color } = member.clientData;
+  const el = document.createElement('div');
+  el.appendChild(document.createTextNode(name));
+  el.className = 'member';
+  el.style.color = color;
+  return el;
+}
+
+function updateMembersDOM() {
+  DOM.membersCount.innerText = `${members.length} users in room:`;
+  DOM.membersList.innerHTML = 'Adventurer in the Tavern:';
+  members.forEach(member =>
+    DOM.membersList.appendChild(createMemberElement(member))
+
   );
 }
 
-// Hook up data channel event handlers
-function setupDataChannel() {
-  checkDataChannelState();
-  dataChannel.onopen = checkDataChannelState;
-  dataChannel.onclose = checkDataChannelState;
-  dataChannel.onmessage = event =>
-    insertMessageToDOM(JSON.parse(event.data), false)
+function createMessageElement(text, member) {
+  const el = document.createElement('div');
+  el.appendChild(createMemberElement(member));
+  el.appendChild(document.createTextNode(text));
+  el.className = 'message';
+  return el;
 }
 
-function checkDataChannelState() {
-  console.log('WebRTC channel state is:', dataChannel.readyState);
-  if (dataChannel.readyState === 'open') {
-    insertMessageToDOM({content: 'WebRTC data channel is now open, You have joined the realm.'});
+function addMessageToListDOM(text, member) {
+  const el = DOM.messages;
+  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+  el.appendChild(createMessageElement(text, member));
+  if (wasTop) {
+    el.scrollTop = el.scrollHeight - el.clientHeight;
   }
 }
 
-function insertMessageToDOM(options, isFromMe) {
-  const template = document.querySelector('template[data-template="message"]');
-  const nameEl = template.content.querySelector('.message__name');
-  if (options.emoji || options.name) {
-    nameEl.innerText = options.emoji + ' ' + options.name;
-  }
-  template.content.querySelector('.message__bubble').innerText = options.content;
-  const clone = document.importNode(template.content, true);
-  const messageEl = clone.querySelector('.message');
-  if (isFromMe) {
-    messageEl.classList.add('message--mine');
-  } else {
-    messageEl.classList.add('message--theirs');
-  }
-
-  const messagesEl = document.querySelector('.messages');
-  messagesEl.appendChild(clone);
-
-  // Scroll to bottom
-  messagesEl.scrollTop = messagesEl.scrollHeight - messagesEl.clientHeight;
-}
-
-const form = document.querySelector('form');
-form.addEventListener('submit', () => {
-  const input = document.querySelector('input[type="text"]');
-  const value = input.value;
-  input.value = '';
-
-  const data = {
-    name,
-    content: value,
-    emoji,
-  };
-
-  dataChannel.send(JSON.stringify(data));
-
-  insertMessageToDOM(data, true);
-});
-
-insertMessageToDOM({ content: 'Channel is ' + location.href + ', To create a new channel change the numbers and the letters after the #.' });
