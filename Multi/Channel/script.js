@@ -185,4 +185,4 @@ form.addEventListener('submit', () => {
   insertMessageToDOM(data, true);
 });
 
-insertMessageToDOM({ content: 'Channel is ' + location.href + ', To create a new channel change the numbers and the letters after the #.' });
+insertMessageToDOM({ content: 'Channel is ' + location.href + ', To create a new channel change the numbers and the letters after the # and send the link to your friend.' });
