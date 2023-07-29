@@ -25,6 +25,15 @@
             right: 16px;
             font-size: 18px;
         }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .body {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
     </style>
     <script>
         function setCookie(cname, cvalue, exdays) {
